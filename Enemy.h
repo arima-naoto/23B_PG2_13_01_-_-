@@ -1,18 +1,15 @@
 #pragma once
 #include "Struct.h"
 
-class Bullet
+class Enemy
 {
 public:
-	Bullet();
 
-	~Bullet();
+	virtual void Update();
 
-	void Update();
+	virtual void Draw();
 
-	void Draw();
-
-public:
+protected:
 
 	Vector2 position_;
 
@@ -21,7 +18,5 @@ public:
 	int speed_;
 
 	unsigned int color_;
-
-	bool isShot_;
 
 };

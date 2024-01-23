@@ -22,7 +22,7 @@ public:
 
 	int speed_;
 
-	int color_;
+	unsigned int color_;
 
 	Bullet* bullet;
 };
