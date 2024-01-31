@@ -16,7 +16,7 @@ Player::~Player()
 	delete bullet;
 }
 
-void Player::Update(char *keys,char *preKeys)
+void Player::Update(char *keys,char *preKeys,Enemy *enemy)
 {
 	if (keys[DIK_D]) {
 		position_.x += speed_;
@@ -42,6 +42,8 @@ void Player::Update(char *keys,char *preKeys)
 	}
 
 	bullet->Update();
+
+	bullet->IsHit(enemy);
 }
 
 void Player::Draw() 

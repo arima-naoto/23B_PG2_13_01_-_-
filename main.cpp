@@ -1,8 +1,11 @@
 #include <Novice.h>
 #include <Player.h>
 #include <Enemy.h>
+#include <Collision.h>
 
 const char kWindowTitle[] = "GC1C_02_アリマ_ナオト";
+
+bool Enemy::isAlive = true;
 
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
@@ -31,9 +34,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		/// ↓更新処理ここから
 		///
 
-		player->Update(keys,preKeys);
+		player->Update(keys,preKeys,enemy);
 
 		enemy->Update();
+
+
 
 		///
 		/// ↑更新処理ここまで

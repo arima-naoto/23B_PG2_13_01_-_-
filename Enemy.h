@@ -25,5 +25,7 @@ public:
 
 	unsigned int color_[MAX];
 
+	static bool isAlive;
+
 };
 

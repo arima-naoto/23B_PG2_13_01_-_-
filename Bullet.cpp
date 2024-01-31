@@ -1,6 +1,7 @@
 #include "Bullet.h"
 #include "Novice.h"
 
+
 Bullet::Bullet()
 {
 	position_.x = 0;
@@ -9,9 +10,14 @@ Bullet::Bullet()
 	speed_ = 10;
 	color_ = WHITE;
 	isShot_ = false;
+
+	collision_ = new Collision();
 }
 
-Bullet::~Bullet(){}
+Bullet::~Bullet()
+{
+	delete collision_;
+}
 
 void Bullet::Update()
 {
@@ -28,8 +34,17 @@ void Bullet::Update()
 
 void Bullet::Draw()
 {
-	if(isShot_ == true)
+	if (isShot_ == true)
 	{
 		Novice::DrawEllipse(position_.x, position_.y, radius_, radius_, 0.0f, color_, kFillModeSolid);
+	}
+}
+
+void Bullet::IsHit(Enemy *enemy)
+{
+	for (int i = 0; i < MAX; i++) {
+		if(collision_->Box(position_, enemy->position_[i], radius_, enemy->radius_[i])){
+			Enemy::isAlive = false;
+		}
 	}
 }

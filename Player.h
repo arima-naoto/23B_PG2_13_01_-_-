@@ -1,6 +1,7 @@
 #pragma once
 #include "Struct.h"
 #include "Bullet.h"
+#include "Enemy.h"
 
 class Player
 {
@@ -10,7 +11,7 @@ public:
 
 	~Player();
 
-	void Update(char* keys,char *preKeys);
+	void Update(char* keys,char *preKeys,Enemy *enemy);
 
 	void Draw();
 

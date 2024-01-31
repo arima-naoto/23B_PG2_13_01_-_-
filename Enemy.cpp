@@ -30,8 +30,11 @@ void Enemy::Update()
 
 void Enemy::Draw()
 {
-	for(int i = 0; i < MAX; i++)
+	for (int i = 0; i < MAX; i++)
 	{
-		Novice::DrawEllipse(position_[i].x, position_[i].y, radius_[i], radius_[i], 0.0f, color_[i], kFillModeSolid);
+		if (isAlive == true) 
+		{
+			Novice::DrawEllipse(position_[i].x, position_[i].y, radius_[i], radius_[i], 0.0f, color_[i], kFillModeSolid);
+		}
 	}
 }
