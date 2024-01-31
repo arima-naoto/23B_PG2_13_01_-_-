@@ -1,16 +1,15 @@
 #pragma once
 #include "Struct.h"
-#include "Bullet.h"
 
-class Player
+class Bullet
 {
 public:
 
-	Player();
+	Bullet();
 
-	~Player();
+	~Bullet();
 
-	void Update(char* keys,char *preKeys);
+	void Update();
 
 	void Draw();
 
@@ -18,12 +17,12 @@ public:
 
 	Vector2 position_;
 
-	Bullet* bullet;
-
 	int radius_;
 
 	int speed_;
 
 	unsigned int color_;
-};
 
+	bool isShot_;
+
+};

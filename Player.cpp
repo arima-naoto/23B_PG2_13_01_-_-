@@ -7,11 +7,16 @@ Player::Player()
 	radius_ = 35;
 	speed_ = 5;
 	color_ = GREEN;
+
+	bullet = new Bullet();
 }
 
-Player::~Player(){}
+Player::~Player()
+{
+	delete bullet;
+}
 
-void Player::Update(char *keys)
+void Player::Update(char *keys,char *preKeys)
 {
 	if (keys[DIK_D]) {
 		position_.x += speed_;
@@ -28,10 +33,21 @@ void Player::Update(char *keys)
 	if (keys[DIK_S]) {
 		position_.y += speed_;
 	}
+
+	if(keys[DIK_SPACE] && !preKeys[DIK_SPACE] && bullet->isShot_ == false)
+	{
+		bullet->isShot_ = true;
+		bullet->position_.x = position_.x;
+		bullet->position_.y = position_.y;
+	}
+
+	bullet->Update();
 }
 
 void Player::Draw() 
 {
+	bullet->Draw();
+
 	Novice::DrawEllipse(position_.x, position_.y, radius_, radius_, 0.0f, color_, kFillModeSolid);
 }
 
